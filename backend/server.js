@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const morgan = require('morgan');
 const app = express();
-app.use(morgan('dev'));
+
 const mongoUrl = "mongodb+srv://junemoenyinyiict:adminadmin@mern-cluster.e9gb9hh.mongodb.net/?retryWrites=true&w=majority&appName=MERN-Cluster";
 mongoose.connect(mongoUrl)
     .then(() => {
@@ -14,6 +14,9 @@ mongoose.connect(mongoUrl)
         })
     });
 const RecipesRoutes = require('./router/recipes');
+
+app.use(express.json());
+app.use(morgan('dev'));
 
 const port = process.env.PORT;
 
